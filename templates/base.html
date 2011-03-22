@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+      	<title>Bíblia Sagrada - Versão Almeida Corrigida Fiel</title>
+      	<meta http-equiv="content-language" content="pt-br" />
+      	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      	<meta name="author" content="Bragil" />
+      	<meta name="description" content="Bíblia Sagrada - Versão Almeida Corrigida Fiel" />
+      	<meta name="keywords" content="bíblia, sagrada" />
+          <link rel="stylesheet" href="{{ MEDIA_URL }}css/principal.css" type="text/css" />
+      	<link rel="stylesheet" href="{{ MEDIA_URL }}css/cupertino/jquery-ui-1.8.10.custom.css" type="text/css" />
+      	<!-- <link id="page_favicon" href="{{ MEDIA_URL }}images/favicon.ico" rel="icon" type="image/x-icon" /> -->
+      	<!-- <script type="text/javascript" src="{{ MEDIA_URL }}js/curvycorners.js"></script> -->
+          <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.4.min.js"></script>
+          <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.10.custom.min.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/main.js"></script>
+	</head>
+	<body>
+		<div id="raiz">
+			<div class="ui-widget">
+				<form name="frm_filtro" method="post" action="">
+					<table id="campos_filtro">
+						<tr>
+							<td>
+								<strong>Livro e Capítulo:</strong>
+								<input id="livro_capitulo" />
+								<select name="capitulo" id="capitulo" disabled="disabled">
+									<option></option>
+								</select>
+								<select name="versiculo" id="versiculo" disabled="disabled">
+									<option></option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div id="conteudo">
+				{% for txt in textos %}
+				<p class="texto">
+					<span class="num_versiculo">{{ txt.capitulo }}:{{ txt.versiculo }}</span>
+					{{ txt.texto }}
+				</p>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>

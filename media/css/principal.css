@@ -1,0 +1,12 @@
+/* Inicializações, hacks e afins */
+html, body { height: 100%; }
+
+body { font-family: Arial, Helvetica, Sans-Serif; font-size: 12px; color: #000000; background-color: #E4E9ED; }
+
+#raiz { width:900px; margin: 0 auto; background-color: #FFFFFF; padding: 6px; }
+
+#filtro {  }
+
+#campos_filtro { width: 100%; }
+
+#livro_capitulo { width: 40%; }
