@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.db import models
+from django.db import models, connection
 
 class Testamento(models.Model):
 	"""
@@ -22,6 +22,26 @@ class Livro(models.Model):
 	
 	def __unicode__(self):
 		return self.livro
+		
+	def get_capitulos(self, livro_id):
+		cursor = connection.cursor()
+		cursor.execute("SELECT DISTINCT cd_capitulo FROM tb_textos WHERE cd_livro = %s ORDER BY cd_capitulo", [livro_id])
+		rows = cursor.fetchall()
+		lista = []
+		if rows:
+			for r in rows:
+				lista.append(r[0])
+		return lista
+		
+	def get_versiculos(self, livro_id, capitulo_num):
+		cursor = connection.cursor()
+		cursor.execute("SELECT cd_versiculo FROM tb_textos WHERE cd_livro = %s AND cd_capitulo = %s ORDER BY cd_versiculo", [livro_id, capitulo_num])
+		rows = cursor.fetchall()
+		lista = []
+		if rows:
+			for r in rows:
+				lista.append(r[0])
+		return lista
 		
 	class Meta:
 		ordering = ['testamento', 'id']
