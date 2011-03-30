@@ -37,3 +37,27 @@ def busca_versiculos(request):
 	livro = Livro()
 	lista = livro.get_versiculos(livro_id, capitulo_num)
 	return HttpResponse(simplejson.dumps(lista), mimetype="application/x-javascript")
+	
+def busca_textos_capitulo(request):
+	livro_id = request.GET['l']  # ID do Livro
+	capitulo_num = request.GET['c'] # Capítulo
+	#verso_num = request.GET['v'] # Versículo
+	
+	textos = Texto.objects.filter(livro__id = livro_id).filter(capitulo = capitulo_num)
+	txt = ''
+	if textos:
+		for t in textos:
+			txt = txt + '<p class="texto"><span class="num_versiculo">' + str(t.capitulo) + ':' + str(t.versiculo) + '</span>' + t.texto + '</p>'
+	return HttpResponse(txt)
+	
+def busca_texto_versiculo(request):
+	livro_id = request.GET['l']  # ID do Livro
+	capitulo_num = request.GET['c'] # Capítulo
+	verso_num = request.GET['v'] # Versículo
+	
+	textos = Texto.objects.filter(livro__id = livro_id).filter(capitulo = capitulo_num).filter(versiculo = verso_num)
+	txt = ''
+	if textos:
+		for t in textos:
+			txt = txt + '<p class="texto"><span class="num_versiculo">' + str(t.capitulo) + ':' + str(t.versiculo) + '</span>' + t.texto + '</p>'
+	return HttpResponse(txt)
