@@ -1,4 +1,4 @@
-# Create your views here.
+# -*- coding: utf-8 -*-
 from django_biblia.biblia.models import *
 from django.core import serializers
 from django.db.models import Count
@@ -21,3 +21,19 @@ def busca_livro(request):
 			res.append(dict)
 			
 	return HttpResponse(simplejson.dumps(res), mimetype="application/x-javascript")
+
+
+def busca_capitulos(request):
+	livro_id = request.GET['l']  # ID do Livro
+	
+	livro = Livro()
+	lista = livro.get_capitulos(livro_id)
+	return HttpResponse(simplejson.dumps(lista), mimetype="application/x-javascript")
+	
+def busca_versiculos(request):
+	livro_id = request.GET['l']  # ID do Livro
+	capitulo_num = request.GET['c'] # Capítulo
+	
+	livro = Livro()
+	lista = livro.get_versiculos(livro_id, capitulo_num)
+	return HttpResponse(simplejson.dumps(lista), mimetype="application/x-javascript")
