@@ -10,6 +10,8 @@ urlpatterns = patterns('',
 	(r'^statics/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	(r'^$', 'django_biblia.biblia.views.index'),
 	(r'^livros/$', 'django_biblia.biblia.views.busca_livro'),
+	(r'^get_capitulos/$', 'django_biblia.biblia.views.busca_capitulos'),
+	(r'^get_versiculos/$', 'django_biblia.biblia.views.busca_versiculos'),
 	# Example:
 	# (r'^django_biblia/', include('django_biblia.foo.urls')),
 
