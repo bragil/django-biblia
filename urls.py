@@ -12,6 +12,8 @@ urlpatterns = patterns('',
 	(r'^livros/$', 'django_biblia.biblia.views.busca_livro'),
 	(r'^get_capitulos/$', 'django_biblia.biblia.views.busca_capitulos'),
 	(r'^get_versiculos/$', 'django_biblia.biblia.views.busca_versiculos'),
+	(r'^get_textos_capitulo/$', 'django_biblia.biblia.views.busca_textos_capitulo'),
+	(r'^get_texto_versiculo/$', 'django_biblia.biblia.views.busca_texto_versiculo'),
 	# Example:
 	# (r'^django_biblia/', include('django_biblia.foo.urls')),
 
