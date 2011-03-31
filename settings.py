@@ -1,4 +1,4 @@
-# Django settings for django_biblia project.
+# -*- coding: utf-8 -*-
 import os
 PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
