@@ -20,11 +20,7 @@ def busca_livro(request):
 	"""
 	busca = request.GET['term']
 	livros = Livro.objects.filter(livro__istartswith=busca)
-	res = []
-	if livros:
-		for l in livros:
-			dict = {'id':l.id, 'label':l.__unicode__(), 'value':l.__unicode__()}
-			res.append(dict)
+	res = [ dict(id=l.id, label=l.__unicode__(), value=l.__unicode__()) for l in livros ]
 			
 	return HttpResponse(simplejson.dumps(res), mimetype="application/x-javascript")
 
