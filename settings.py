@@ -6,7 +6,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Rogério Bragil', 'bragil@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -22,13 +22,6 @@ DATABASES = {
     }
 }
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
 TIME_ZONE = 'America/Sao_Paulo'
 
 # Language code for this installation. All choices can be found here:
@@ -77,12 +70,18 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+#TEMPLATE_CONTEXT_PROCESSORS = (
+#    "django.core.context_processors.auth",
+#    "django.core.context_processors.debug",
+#    "django.core.context_processors.i18n",
+#    "django.core.context_processors.media",
+#    "django.core.context_processors.request",
+#)
+
 ROOT_URLCONF = 'django_biblia.urls'
 
 TEMPLATE_DIRS = (
 	os.path.join(PROJECT_ROOT_PATH,'templates'),
-	#os.path.join(PROJECT_ROOT_PATH,'core/templates'),
-	#os.path.join(PROJECT_ROOT_PATH,'aqua/templates'),
 )
 
 INSTALLED_APPS = (
