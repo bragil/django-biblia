@@ -3,7 +3,7 @@ from django.db import models, connection
 
 class Testamento(models.Model):
 	"""
-	Representa o antigo e o novo testamento.
+	Representa o Antigo e o Novo Testamento.
 	"""
 	id = models.AutoField(primary_key=True, db_column='cd_testamento')
 	testamento = models.CharField(max_length=50, null=False, db_column='ds_testamento')
@@ -14,8 +14,13 @@ class Testamento(models.Model):
 	class Meta:
 		ordering = ['id']
 		db_table = 'tb_testamentos'
+		managed = False
+
 
 class Livro(models.Model):
+	"""
+	Os livros da Bíblia
+	"""
 	id = models.AutoField(primary_key=True,db_column='cd_livro')
 	testamento = models.ForeignKey(Testamento, null=False, db_column='cd_testamento', db_index=True)
 	livro = models.CharField(max_length=100, null=False, db_column='ds_livro')
@@ -46,6 +51,8 @@ class Livro(models.Model):
 	class Meta:
 		ordering = ['testamento', 'id']
 		db_table = 'tb_livros'
+		managed = False
+
 
 class Texto(models.Model):
 	"""
@@ -63,3 +70,4 @@ class Texto(models.Model):
 	class Meta:
 		ordering = ['livro', 'capitulo', 'versiculo']
 		db_table = 'tb_textos'
+		managed = False

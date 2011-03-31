@@ -8,10 +8,16 @@ from django.http import HttpResponse
 from django.utils import simplejson
 
 def index(request):
+	"""
+	PÃ¡gina inicial, traz os versÃ­culos de GÃªnesis 1
+	"""
 	textos = Texto.objects.filter(capitulo=1).filter(livro__id=1)
 	return render_to_response('base.html', locals(), context_instance=RequestContext(request))
 	
 def busca_livro(request):
+	"""
+	Retorna os livros da BÃ­blia para serem exibidos no autocomplete do campo de busca, de acordo com a busca feita.
+	"""
 	busca = request.GET['term']
 	livros = Livro.objects.filter(livro__istartswith=busca)
 	res = []
@@ -32,7 +38,7 @@ def busca_capitulos(request):
 	
 def busca_versiculos(request):
 	livro_id = request.GET['l']  # ID do Livro
-	capitulo_num = request.GET['c'] # Capítulo
+	capitulo_num = request.GET['c'] # CapÃ­tulo
 	
 	livro = Livro()
 	lista = livro.get_versiculos(livro_id, capitulo_num)
@@ -40,8 +46,7 @@ def busca_versiculos(request):
 	
 def busca_textos_capitulo(request):
 	livro_id = request.GET['l']  # ID do Livro
-	capitulo_num = request.GET['c'] # Capítulo
-	#verso_num = request.GET['v'] # Versículo
+	capitulo_num = request.GET['c'] # CapÃ­tulo
 	
 	textos = Texto.objects.filter(livro__id = livro_id).filter(capitulo = capitulo_num)
 	txt = ''
@@ -52,8 +57,8 @@ def busca_textos_capitulo(request):
 	
 def busca_texto_versiculo(request):
 	livro_id = request.GET['l']  # ID do Livro
-	capitulo_num = request.GET['c'] # Capítulo
-	verso_num = request.GET['v'] # Versículo
+	capitulo_num = request.GET['c'] # CapÃ­tulo
+	verso_num = request.GET['v'] # VersÃ­culo
 	
 	textos = Texto.objects.filter(livro__id = livro_id).filter(capitulo = capitulo_num).filter(versiculo = verso_num)
 	txt = ''
