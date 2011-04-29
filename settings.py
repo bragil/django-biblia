@@ -22,6 +22,9 @@ DATABASES = {
     }
 }
 
+#Configuração do cache
+CACHE_BACKEND = 'locmem:///'
+
 TIME_ZONE = 'America/Sao_Paulo'
 
 # Language code for this installation. All choices can be found here:
