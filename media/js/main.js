@@ -20,11 +20,10 @@ $(function() {
 					$.getJSON('/get_capitulos/',
 							{l:ui.item.id},
 							function(data) {
-								//data = eval(data);
-								//list = eval('[' + data + ']');
 								var option = new Array();
+								// Adiciona o ID do livro no campo hidden
 								$("#livro_id").val(ui.item.id);
-								
+
 								resetaCombo('capitulo');
 								$("select[name='capitulo']").attr("disabled", false);
 								$.each(data, function(i, obj) {
@@ -34,7 +33,17 @@ $(function() {
 			 
 									$("select[name='capitulo']").append( option[i] );//jogando um à um os options no próximo combo
 								});
+
+								// Traz o texto dos versículos do capítulo 1 deste livro
+								$.ajax({
+								  url: '/get_textos_capitulo/?l=' + $("#livro_id").val() + '&c=1',
+								  context: document.body,
+								  success: function(data){
+								    $("#conteudo").html(data);
+								  }
+								});
 							});
+
 				}
 			});
 	
