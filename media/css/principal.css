@@ -10,3 +10,5 @@ body { font-family: Arial, Helvetica, Sans-Serif; font-size: 12px; color: #00000
 #campos_filtro { width: 100%; }
 
 #livro_capitulo { width: 40%; }
+
+.num_versiculo { font-weight: bold; color: darkblue; }
