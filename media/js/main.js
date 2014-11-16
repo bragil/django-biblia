@@ -16,7 +16,7 @@ $(function() {
 				minLength: 2,
 				select: function( event, ui ) {
 					//alert(ui.item.value);
-					
+
 					$.getJSON('/get_capitulos/',
 							{l:ui.item.id},
 							function(data) {
@@ -30,7 +30,7 @@ $(function() {
 									option[i] = document.createElement('option');//criando o option
 									$( option[i] ).attr( {value : obj} );//colocando o value no option
 									$( option[i] ).append( obj );//colocando o 'label'
-			 
+
 									$("select[name='capitulo']").append( option[i] );//jogando um à um os options no próximo combo
 								});
 
@@ -46,13 +46,13 @@ $(function() {
 
 				}
 			});
-	
+
 	$("#capitulo").change( function() {
 		// Preenche o combo de versículos
 		$.getJSON('/get_versiculos/?l=' + $("#livro_id").val() + '&c=' + $("#capitulo").val(),
 				function(data) {
 					var option = new Array();
-					
+
 					resetaCombo('versiculo');
 					$("select[name='versiculo']").attr("disabled", false);
 					$.each(data, function(i, obj) {
@@ -72,7 +72,7 @@ $(function() {
 		  }
 		});
 	});
-	
+
 	// Traz o texto do versículo
 	$("#versiculo").change( function() {
 		$.ajax({
